@@ -19,6 +19,8 @@ public class CameraBehaviour : MonoBehaviour
     }
     void LateUpdate()
     {
+        guideLine();
+
         if (cueBallTransform != null)
         {
             moveCam();
@@ -86,6 +88,21 @@ public class CameraBehaviour : MonoBehaviour
             }
         }
 
+    }
+
+    public void guideLine()
+    {
+        GetComponent<LineRenderer>().enabled = false;
+        if (cue.activeSelf)
+        {
+            GetComponent<LineRenderer>().enabled = true;
+            Ray ray = new Ray(cueBallTransform.position, new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z));
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                GetComponent<LineRenderer>().SetPositions(new[] { cueBallTransform.position, hit.point });
+            }
+        }
     }
 
 }

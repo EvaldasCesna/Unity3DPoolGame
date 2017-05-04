@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoringScript : MonoBehaviour {
@@ -12,6 +13,7 @@ public class ScoringScript : MonoBehaviour {
     private bool resetCueBall;
 
     public bool pOneTurn;
+    public GameObject winScreen;
     public GameObject cueBall;
     public GameObject cue;
     public Text pOneText;
@@ -104,26 +106,28 @@ public class ScoringScript : MonoBehaviour {
             {
                 pOneScore++;
                 updateScoreText();
-                Debug.Log("P1 Wins");
+                winScreen.GetComponentInChildren<Text>().text = "Player 1 Wins";
             }
             else
             {
-                Debug.Log("P1 Loss");
+                winScreen.GetComponentInChildren<Text>().text = "Player 1 Loss";
             }
         }
-        else
+        else if(!pOneTurn)
         {
             if (pTwoScore == 7)
             {
                 pTwoScore++;
                 updateScoreText();
-                Debug.Log("P2 Wins");
+                winScreen.GetComponentInChildren<Text>().text = "Player 2 Wins";
             }
             else
             {
-                Debug.Log("P2 Loss");
+                winScreen.GetComponentInChildren<Text>().text = "Player 2 Loss";
             }
         }
+        cue.SetActive(false);
+        winScreen.SetActive(true);
     }
 
     public void scoreBalls(bool isSolid, bool isStripe)
@@ -196,6 +200,11 @@ public class ScoringScript : MonoBehaviour {
     {
         pOneText.text = pOneScore.ToString();
         pTwoText.text = pTwoScore.ToString();
+    }
+
+    public void reloadScene()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }
