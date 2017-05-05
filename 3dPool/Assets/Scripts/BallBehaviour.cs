@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallBehaviour : MonoBehaviour {
+public class BallBehaviour : MonoBehaviour
+{
     private Rigidbody rig;
 
     public bool isMoving;
@@ -10,14 +11,15 @@ public class BallBehaviour : MonoBehaviour {
     public float speed;
     public float maxSpeed;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         rig = GetComponent<Rigidbody>();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(transform.position.y < 0f)
+    // Update is called once per frame
+    void Update()
+    {
+        if (transform.position.y < 0f)
         {
             resetPos();
         }
@@ -27,7 +29,7 @@ public class BallBehaviour : MonoBehaviour {
     {
         float inputSpeed = (speed * Input.GetAxis("Mouse Y"));
 
-        if  (inputSpeed > maxSpeed)
+        if (inputSpeed > maxSpeed)
         {
             inputSpeed = maxSpeed;
         }

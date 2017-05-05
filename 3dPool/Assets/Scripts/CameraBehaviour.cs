@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
-    private float turnSpeed = 4.0f;
+    private float turnSpeed = 5.0f;
 
     public GameObject cue;
     public GameObject back;
     public Vector3 offset;
     public Transform cueBallTransform;
     public Camera cam2;
+    public GameObject ControlImage;
+
 
     void Start()
     {
@@ -21,17 +23,13 @@ public class CameraBehaviour : MonoBehaviour
     {
         guideLine();
 
+        //Only be able to move if the ball exists
         if (cueBallTransform != null)
         {
             moveCam();
             moveCue();
         }
         switchCamera();
-    }
-
-    public void setTarget(Transform target)
-    {
-        cueBallTransform = target;
     }
 
     public void switchCamera()
@@ -53,13 +51,16 @@ public class CameraBehaviour : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            ControlImage.transform.rotation = Quaternion.Euler(Vector3.zero);
             //Locks Cursor to screen if not running in fullscreen
             Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
             turnSpeed = 0;
         }
         if (Input.GetButtonUp("Fire1"))
         {
-            turnSpeed = 4.0f;
+            ControlImage.transform.rotation = Quaternion.Euler(0, 0, -90);
+            turnSpeed = 5.0f;
         }
         offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
 
@@ -72,7 +73,7 @@ public class CameraBehaviour : MonoBehaviour
     {
         cue.transform.LookAt(new Vector3(cueBallTransform.position.x, cueBallTransform.transform.position.y, cueBallTransform.transform.position.z));
         cue.transform.Rotate(new Vector3(1.0f, 0, 0), 90);
-        float mouseInput = Convert.ToSingle(Input.GetAxis("Mouse Y") * 0.01);
+        float mouseInput = Convert.ToSingle(Input.GetAxis("Mouse Y") * 0.02);
 
         if (cue.activeSelf)
         {
@@ -87,7 +88,6 @@ public class CameraBehaviour : MonoBehaviour
                 cue.transform.position = Vector3.MoveTowards(cue.transform.position, back.transform.position, mouseInput);
             }
         }
-
     }
 
     public void guideLine()
@@ -104,5 +104,4 @@ public class CameraBehaviour : MonoBehaviour
             }
         }
     }
-
 }

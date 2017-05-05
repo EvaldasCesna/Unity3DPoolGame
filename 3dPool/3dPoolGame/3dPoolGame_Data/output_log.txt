@@ -1,0 +1,36 @@
+Initialize engine version: 5.6.0f3 (497a0f351392)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 980 (ID=0x13c0)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   22.21.13.8189
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.083 seconds
+Platform assembly: C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\PC\Documents\3dPool\3dPoolGame\3dPoolGame_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.031393 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 3390 -> priority: 1 
+  Thread -> id: 2e5c -> priority: 1 
+  Thread -> id: 2dd0 -> priority: 1 
+  Thread -> id: 2488 -> priority: 1 
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.041086 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 544.
+Total: 0.280943 ms (FindLiveObjects: 0.038881 ms CreateObjectMapping: 0.032450 ms MarkObjects: 0.206103 ms  DeleteObjects: 0.002923 ms)
+

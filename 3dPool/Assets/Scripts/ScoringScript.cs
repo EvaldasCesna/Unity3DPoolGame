@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ScoringScript : MonoBehaviour {
+public class ScoringScript : MonoBehaviour
+{
     private int pOneScore;
     private int pTwoScore;
     private bool pOneSolids;
@@ -25,7 +26,8 @@ public class ScoringScript : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         pOneScore = 0;
         pTwoScore = 0;
         updateScoreText();
@@ -33,18 +35,18 @@ public class ScoringScript : MonoBehaviour {
         pOneTurn = false;
         changeTurn();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if (cue.GetComponent<CueBehaviour>().ballHit && GameObject.FindGameObjectWithTag("CueBall").GetComponent<Rigidbody>().velocity.magnitude > 0.001)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (cue.GetComponent<CueBehaviour>().ballHit && GameObject.FindGameObjectWithTag("CueBall").GetComponent<Rigidbody>().velocity.magnitude > 0.001)
         {
             cue.GetComponent<CueBehaviour>().ballHit = false;
             cue.SetActive(false);
 
             Invoke("changeTurn", 6f);
-  
         }
-	}
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -66,7 +68,7 @@ public class ScoringScript : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
-        if(other.gameObject.tag == "CueBall")
+        if (other.gameObject.tag == "CueBall")
         {
             resetCueBall = true;
             cueBall.GetComponent<BallBehaviour>().resetPos();
@@ -76,12 +78,12 @@ public class ScoringScript : MonoBehaviour {
 
     public void changeTurn()
     {
+        cue.GetComponent<CueBehaviour>().resetPosition();
         cue.SetActive(true);
         if (resetCueBall)
         {
             cueBall.SetActive(true);
         }
-
 
         if (pOneTurn == false)
         {
@@ -95,7 +97,7 @@ public class ScoringScript : MonoBehaviour {
             pOneTurnText.text = " ";
             pTwoTurnText.text = ">";
         }
-      
+
     }
 
     public void eightBall()
@@ -113,7 +115,7 @@ public class ScoringScript : MonoBehaviour {
                 winScreen.GetComponentInChildren<Text>().text = "Player 1 Loss";
             }
         }
-        else if(!pOneTurn)
+        else if (!pOneTurn)
         {
             if (pTwoScore == 7)
             {
@@ -126,6 +128,7 @@ public class ScoringScript : MonoBehaviour {
                 winScreen.GetComponentInChildren<Text>().text = "Player 2 Loss";
             }
         }
+        Cursor.visible = true;
         cue.SetActive(false);
         winScreen.SetActive(true);
     }
